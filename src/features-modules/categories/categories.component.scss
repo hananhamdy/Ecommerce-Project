@@ -1,0 +1,36 @@
+@import '/imports/functions';
+
+.cards-wrapper {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.card-product {
+    flex-basis: calc((100% - 20px)/ 3);
+    text-align: center;
+
+    .mat-mdc-card-image {
+        height: 300px;
+
+        img {
+            height: 100%;
+            width: 100%;
+            object-fit: fill;
+        }
+    }
+
+  }
+
+  @media (max-width: 1024px) {
+    .card-product {
+      flex-basis: calc((100% - 20px)/ 2);
+    }
+  }
+  
+  @media (max-width: 700px) {
+    .card-product {
+      flex-basis: 100%;
+    }
+  }

@@ -1,28 +1,7 @@
 <section class="section">
     <div class="container">
         <div class="banner">
-            <h1>Welcome {{user?.username}} :)</h1>
-        </div>
-    </div>
-</section>
-
-<section class="section">
-    <div class="container">
-        <div class="cards-wrapper">
-            @for (product of productsList; track $index) {
-                <mat-card class="card card-product" appearance="outlined">
-                    <div mat-card-image>
-                        <img [src]="product.image" [alt]="product.title">
-                    </div>
-                    <mat-card-header>
-                        <mat-card-title>{{product.title}}</mat-card-title>
-                        <mat-card-subtitle>{{product.price}}</mat-card-subtitle>
-                    </mat-card-header>
-                    <mat-card-actions>
-                        <button [routerLink]="'/category/' + product.id" mat-button>show more</button>
-                    </mat-card-actions>
-                </mat-card>
-            }
+            <h1>Welcome</h1>
         </div>
     </div>
 </section>

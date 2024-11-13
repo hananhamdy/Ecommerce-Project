@@ -1,0 +1,18 @@
+@import '/imports/functions';
+
+.card-not-found {
+    text-align: center;
+
+    img {
+        width: 150px;
+    }
+
+    .btn {
+        background-color: $color-primary;
+        color: $color-white;
+        margin-top: 2rem;
+        padding: 1rem;
+        display: inline-block;
+        border-radius: 1rem;
+    }
+}

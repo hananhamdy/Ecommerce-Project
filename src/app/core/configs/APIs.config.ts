@@ -5,7 +5,9 @@ export class APIs {
   public static apiUrl = environment.apiUrl;
 
   public static Products = {
-    GetProductsList: `${this.apiUrl}/products`,
-    GetProduct: 'https://fakestoreapi.com/products/',
+    GetCategoriesList: `${this.apiUrl}/products/categories/`,
+    GetCategory: `${this.apiUrl}/products/category/`,
+    GetProductsList: `${this.apiUrl}/products/`,
+    GetProduct: `${this.apiUrl}/products/`,
   };
 }

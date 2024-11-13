@@ -1,6 +1,6 @@
 import {
   DOCUMENT
-} from "./chunk-B4ZWT3SR.js";
+} from "./chunk-GK4ZYTD7.js";
 import {
   ANIMATION_MODULE_TYPE,
   Inject,
@@ -74,6 +74,20 @@ function transition(stateChangeExpr, steps, options = null) {
     type: AnimationMetadataType.Transition,
     expr: stateChangeExpr,
     animation: steps,
+    options
+  };
+}
+function animateChild(options = null) {
+  return {
+    type: AnimationMetadataType.AnimateChild,
+    options
+  };
+}
+function query(selector, animation, options = null) {
+  return {
+    type: AnimationMetadataType.Query,
+    selector,
+    animation,
     options
   };
 }
@@ -472,6 +486,8 @@ export {
   style,
   state,
   transition,
+  animateChild,
+  query,
   NoopAnimationPlayer,
   AnimationGroupPlayer,
   ɵPRE_STYLE
@@ -485,4 +501,4 @@ export {
    * License: MIT
    *)
 */
-//# sourceMappingURL=chunk-3425NNLH.js.map
+//# sourceMappingURL=chunk-5JSYV6EP.js.map

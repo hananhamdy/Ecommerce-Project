@@ -1,5 +1,13 @@
 <section class="section">
     <div class="container">
+        <mat-form-field>
+            <mat-label>Select Category</mat-label>
+            <mat-select>
+                @for (item of categoriesList; track item) {
+                    <mat-option (click)="selectCategory(item)" [value]="item">{{item}}</mat-option>
+                }
+            </mat-select>
+        </mat-form-field>
         <div class="cards-wrapper">
             @for (product of productsList; track $index) {
                 <mat-card class="card card-product" appearance="outlined">
@@ -14,6 +22,10 @@
                         <button [routerLink]="'/category/' + product.id" mat-button>show more</button>
                     </mat-card-actions>
                 </mat-card>
+            } @empty {
+                <div class="w-100">
+                    <app-no-data></app-no-data>
+                </div>
             }
         </div>
     </div>

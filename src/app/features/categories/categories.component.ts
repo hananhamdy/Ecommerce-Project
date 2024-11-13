@@ -5,27 +5,52 @@ import { RouterLink } from '@angular/router';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Product } from '../../core/interfaces/product.interface';
 import { APIs } from '../../core/configs/APIs.config';
+import { MatFormField, MatLabel } from '@angular/material/form-field';
+import { MatOption, MatSelect } from '@angular/material/select';
+import { NoDataComponent } from '../../shared/components/no-data/no-data.component';
 
 @Component({
   selector: 'app-categories',
   standalone: true,
-  imports: [MatCardModule, MatButtonModule, RouterLink, HttpClientModule],
+  imports: [NoDataComponent,MatCardModule, MatButtonModule, RouterLink, HttpClientModule, MatLabel, MatSelect, MatFormField, MatOption],
   providers: [],
   templateUrl: './categories.component.html',
   styleUrl: './categories.component.scss'
 })
 export class CategoriesComponent implements OnInit {
   productsList: Product[] = [];
+  categoriesList: Product[] = [];
   isLoading = false;
 
   constructor(private _http: HttpClient) { }
 
   ngOnInit() {
+    this.getCategoriesList();
     this.getProductsList();
   }
 
+  getCategoriesList() {
+    this._http.get(APIs.Products.GetCategoriesList).subscribe((res: any) => {
+      this.categoriesList = ['All', ...res];;
+      this.isLoading = false;
+    });
+  }
+
   getProductsList() {
+    this.isLoading = true;
     this._http.get(APIs.Products.GetProductsList).subscribe((res: any) => {
+      this.productsList = res;
+      this.isLoading = false;
+    });
+  }
+
+  selectCategory(item: any) {
+    this.isLoading = true;
+    if(item == 'All') {
+      this.getProductsList();
+      return;
+    }
+    this._http.get(APIs.Products.GetCategory + item).subscribe((res: any) => {
       this.productsList = res;
       this.isLoading = false;
     });

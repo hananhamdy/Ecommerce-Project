@@ -4,7 +4,7 @@ import { User } from '../../interfaces/user.interface';
 import { MatMenuModule } from '@angular/material/menu';
 import { CookieService } from 'ngx-cookie-service';
 import { LocalStorage } from '../../services/localStorage.service';
-import { UserService } from '../../services/user.service';
+import { AuthenticationService } from '../../services/authentication.service';
 
 @Component({
   selector: 'app-header',
@@ -16,13 +16,13 @@ import { UserService } from '../../services/user.service';
 export class HeaderComponent {
   user: User | null = null;
 
-  constructor(private _router: Router, private _localStorage: LocalStorage, private _userService: UserService) {
+  constructor(private _router: Router, private _authenticationService: AuthenticationService) {
   }
 
   ngOnInit(): void {
-    this._userService.user.subscribe((user: User) => {
-      console.log(user);
+    this._authenticationService.getCurrentUser().subscribe(user => {
       this.user = user;
+      console.log(this.user);
     });
   }
 

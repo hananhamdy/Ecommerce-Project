@@ -1,12 +1,14 @@
 import { EventEmitter, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { LocalStorage } from './localStorage.service';
+import { BehaviorSubject } from 'rxjs';
+import { User } from '../interfaces/user.interface';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthenticationService {
-  private user: any;
+  user: BehaviorSubject<any> = new BehaviorSubject<any>(null);
   private userKey: string = "loggedInUser";
 
   public onLogout: EventEmitter<void> = new EventEmitter<void>();
@@ -17,11 +19,13 @@ export class AuthenticationService {
   ) {}
 
   public getCurrentUser() {
-    this.user = JSON.parse(this.localStorage.get(this.userKey));
+    const user = this.localStorage.get(this.userKey);
+    this.user.next(user);
     return this.user;
   }
   
   public signOut() {
+    this.user.next(null);
     this.localStorage.remove(this.userKey);
     this.router.navigate(['/login']);
   }

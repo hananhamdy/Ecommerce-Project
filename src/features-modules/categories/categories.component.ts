@@ -5,6 +5,7 @@ import { Product } from '../../core-module/interfaces/product.interface';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { RouterLink } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-categories',
@@ -17,13 +18,17 @@ export class CategoriesComponent implements OnInit {
   productsList: Product[] = [];
   isLoading = false;
 
-  constructor(){}
+  constructor(private _http: HttpClient) { }
 
   ngOnInit() {
     this.getProductsList();
   }
 
   getProductsList() {
+    // this._http.get(APIs.Products.GetProductsList).subscribe((res: any) => {
+    //   this.productsList = res;
+    //   this.isLoading = false;
+    // });
     fetch(APIs.Products.GetProductsList)
       .then(res=>res.json())
       .then(json=> {

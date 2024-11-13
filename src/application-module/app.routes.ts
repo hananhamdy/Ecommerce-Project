@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 import { LoginModuleComponent } from '../login-module/login-module.component';
 import { HomeModuleComponent } from '../home-module/home-module.component';
-import { OopsModuleComponent } from '../oops-module/oops-module.component';
+import { OopsComponent } from '../shared/components/oops/oops.component';
 
 export const routes: Routes = [
     {
@@ -19,6 +19,6 @@ export const routes: Routes = [
     },
     {
         path: "**",
-        component: OopsModuleComponent
+        component: OopsComponent
     },
 ];

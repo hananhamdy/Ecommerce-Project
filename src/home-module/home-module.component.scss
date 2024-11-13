@@ -1,0 +1,11 @@
+@import '/imports/functions';
+
+.banner {
+    background-color: $color-primary;
+    color: $color-white;
+    border-radius: 1rem;
+    min-height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

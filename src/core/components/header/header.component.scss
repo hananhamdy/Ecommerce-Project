@@ -1,0 +1,32 @@
+@import '/imports/functions';
+
+.header {
+    background-color: $color-white;
+
+    &-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &-logo {
+        font-size: 1rem;
+        font-weight: bold;
+    }
+
+    &-list {
+        list-style: none;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+
+        &-link {
+            padding: 1rem;
+            display: inline-block;
+
+            &.active {
+                color: $color-primary;
+            }
+        }
+    }
+}

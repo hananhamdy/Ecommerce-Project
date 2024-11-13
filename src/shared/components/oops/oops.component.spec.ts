@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { OopsModuleComponent } from './oops-module.component';
+import { OopsComponent } from './oops.component';
 
-describe('OopsModuleComponent', () => {
-  let component: OopsModuleComponent;
-  let fixture: ComponentFixture<OopsModuleComponent>;
+describe('OopsComponent', () => {
+  let component: OopsComponent;
+  let fixture: ComponentFixture<OopsComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [OopsModuleComponent]
+      imports: [OopsComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(OopsModuleComponent);
+    fixture = TestBed.createComponent(OopsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

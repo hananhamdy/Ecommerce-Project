@@ -32,6 +32,16 @@ a {
     }
 }
 
+.page-wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+
+    &-bottom {
+        margin-top: auto;
+    }
+}
+
 .section {
     padding: 50px 0;
 

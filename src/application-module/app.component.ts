@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from "../core/components/header/header.component";
 import { FooterComponent } from "../core/components/footer/footer.component";
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-root',
@@ -11,5 +12,7 @@ import { FooterComponent } from "../core/components/footer/footer.component";
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'STC-FE-Task';
+  constructor(private _titleService:Title) {
+    this._titleService.setTitle("STC Task");
+  }
 }

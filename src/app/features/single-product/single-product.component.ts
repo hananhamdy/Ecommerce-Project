@@ -6,6 +6,7 @@ import { ActivatedRoute } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { User } from '../../core/interfaces/user.interface';
 import { APIs } from '../../core/configs/APIs.config';
+import { AuthenticationService } from '../../core/services/authentication.service';
 
 @Component({
   selector: 'app-single-product',
@@ -20,13 +21,15 @@ export class SingleProductComponent {
   productId: string = ''
   isLoading = false;
 
-  constructor(private _titleService:Title, private _route: ActivatedRoute, private _cookieService: CookieService) {
+  constructor(private _titleService:Title, private _route: ActivatedRoute, private _authenticationService: AuthenticationService) {
     this._titleService.setTitle("Single Product");
   }
 
   ngOnInit(): void {
-    // const userCookie = this._cookieService.get('loggedInUser');
-    // this.user = JSON.parse(userCookie) as User;
+    this._authenticationService.getCurrentUser().subscribe(user => {
+      this.user = user;
+      console.log(this.user);
+    });
     this.getProductDetails();
   }
 

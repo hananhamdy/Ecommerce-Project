@@ -8,6 +8,8 @@ import { APIs } from '../../core/configs/APIs.config';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatOption, MatSelect } from '@angular/material/select';
 import { NoDataComponent } from '../../shared/components/no-data/no-data.component';
+import { AuthenticationService } from '../../core/services/authentication.service';
+import { User } from '../../core/interfaces/user.interface';
 
 @Component({
   selector: 'app-categories',
@@ -18,13 +20,19 @@ import { NoDataComponent } from '../../shared/components/no-data/no-data.compone
   styleUrl: './categories.component.scss'
 })
 export class CategoriesComponent implements OnInit {
+  user: User | null = null;
   productsList: Product[] = [];
   categoriesList: Product[] = [];
   isLoading = false;
 
-  constructor(private _http: HttpClient) { }
+  constructor(private _http: HttpClient, private _authenticationService: AuthenticationService) {
+  }
 
   ngOnInit() {
+    this._authenticationService.getCurrentUser().subscribe(user => {
+      this.user = user;
+      console.log(this.user);
+    });
     this.getCategoriesList();
     this.getProductsList();
   }

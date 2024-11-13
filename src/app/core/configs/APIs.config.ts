@@ -9,5 +9,6 @@ export class APIs {
     GetCategory: `${this.apiUrl}/products/category/`,
     GetProductsList: `${this.apiUrl}/products/`,
     GetProduct: `${this.apiUrl}/products/`,
+    DeleteProduct: `${this.apiUrl}/products/`,
   };
 }

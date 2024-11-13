@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { RouterLink } from '@angular/router';
@@ -11,6 +11,7 @@ import { NoDataComponent } from '../../shared/components/no-data/no-data.compone
 import { AuthenticationService } from '../../core/services/authentication.service';
 import { User } from '../../core/interfaces/user.interface';
 import { Title } from '@angular/platform-browser';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-categories',
@@ -21,6 +22,7 @@ import { Title } from '@angular/platform-browser';
   styleUrl: './categories.component.scss'
 })
 export class CategoriesComponent implements OnInit {
+  private _snackBar = inject(MatSnackBar);
   user: User | null = null;
   productsList: Product[] = [];
   categoriesList: string[] = [];
@@ -63,6 +65,18 @@ export class CategoriesComponent implements OnInit {
     this._http.get<Product[]>(APIs.Products.GetCategory + item).subscribe((res) => {
       this.productsList = res;
       this.isLoading = false;
+    });
+  }
+
+  deleteProduct(item: Product) {
+    this._snackBar.open('Not implemented yet', 'Close', {
+      duration: 2000,
+    });
+  }
+
+  updateProduct(item: Product) {
+    this._snackBar.open('Not implemented yet', 'Close', {
+      duration: 2000,
     });
   }
 }

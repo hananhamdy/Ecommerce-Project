@@ -21,8 +21,8 @@
                     <mat-card-actions>
                         <button [routerLink]="'/category/' + product.id" mat-button>show more</button>
                         @if (user && user.role == 'admin') {
-                            <button mat-button>Edit</button>
-                            <button mat-button>Delete</button>
+                            <button mat-button (click)="updateProduct(product)">Edit</button>
+                            <button mat-button (click)="deleteProduct(product)">Delete</button>
                         }
                     </mat-card-actions>
                 </mat-card>

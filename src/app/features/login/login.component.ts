@@ -1,5 +1,5 @@
 import { Title } from '@angular/platform-browser';
-import {ChangeDetectionStrategy, Component, OnInit, signal} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, OnInit, signal} from '@angular/core';
 import {MatButtonModule} from '@angular/material/button';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
@@ -9,6 +9,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../../core/services/authentication.service';
 import { UsersResponse } from './users';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 @Component({
@@ -20,8 +21,8 @@ import { UsersResponse } from './users';
   styleUrl: './login.component.scss'
 })
 export class LoginComponent implements OnInit {
+  private _snackBar = inject(MatSnackBar);
   loginForm: FormGroup = new FormGroup({});
-  isUserNotValid = false;
 
   constructor(private _titleService:Title, private _formBuilder: FormBuilder, private _router: Router, private _authenticationService: AuthenticationService) {
     this._titleService.setTitle("Login");
@@ -47,7 +48,9 @@ export class LoginComponent implements OnInit {
       this._authenticationService.user.next(user);
       this._router.navigate(['/home']);
     } else {
-      this.isUserNotValid = true;
+      this._snackBar.open('Invalid credentials', 'Close', {
+        duration: 2000,
+      });
     }
   }
 }

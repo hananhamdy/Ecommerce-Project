@@ -6,9 +6,6 @@
                     <h1 class="section-title">Login</h1>
                     <p class="section-sub-title">Enter your username and password to logged in:</p>
                 </div>
-                @if(isUserNotValid) {
-                    <mat-error class="error">Invalid credentials</mat-error>
-                }
                 <mat-form-field class="form-field" appearance="outline">
                     <mat-label>Username</mat-label>
                     <input type="username" matInput formControlName="username">

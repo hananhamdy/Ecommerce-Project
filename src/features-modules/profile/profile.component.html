@@ -1,0 +1,16 @@
+<section class="section">
+    <div class="container">
+        <div class="banner">
+            <h1>Welcome {{user?.username}} :)</h1>
+        </div>
+        <mat-card class="card" appearance="outlined">
+            <mat-card-header>
+              <mat-card-title-group>
+                <mat-card-title>Name: {{user?.username}}</mat-card-title>
+                <mat-card-subtitle>Role: {{user?.role}}</mat-card-subtitle>
+                <img mat-card-md-image [src]="user?.avatar"  [alt]="user?.username">
+              </mat-card-title-group>
+            </mat-card-header>
+          </mat-card>
+    </div>
+</section>

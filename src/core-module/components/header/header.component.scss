@@ -1,0 +1,44 @@
+@import '/imports/functions';
+
+.header {
+    background-color: $color-white;
+
+    &-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &-logo {
+        font-size: 1rem;
+        font-weight: bold;
+    }
+
+    &-list {
+        list-style: none;
+        display: flex;
+        align-items: center;
+        gap: 2.5rem;
+
+        .avatar {
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+        }
+
+        .mat-mdc-menu-trigger {
+            border: 0;
+            background: transparent;
+            padding: 0;
+        }
+
+        &-link {
+            padding: 1rem 0;
+            display: inline-block;
+
+            &.active {
+                color: $color-primary;
+            }
+        }
+    }
+}

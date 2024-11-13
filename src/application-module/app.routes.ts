@@ -1,7 +1,9 @@
 import { Routes } from '@angular/router';
-import { LoginModuleComponent } from '../login-module/login-module.component';
-import { HomeModuleComponent } from '../home-module/home-module.component';
-import { OopsComponent } from '../shared/components/oops/oops.component';
+import { OopsComponent } from '../shared-module/components/oops/oops.component';
+import { HomeModuleComponent } from '../features-modules/home-module/home-module.component';
+import { LoginModuleComponent } from '../features-modules/login-module/login-module.component';
+import { ProfileComponent } from '../features-modules/profile/profile.component';
+import { CategoriesComponent } from '../features-modules/categories/categories.component';
 
 export const routes: Routes = [
     {
@@ -16,6 +18,14 @@ export const routes: Routes = [
     {
         path: 'home',
         component: HomeModuleComponent
+    },
+    {
+        path: 'categories',
+        component: CategoriesComponent
+    },
+    {
+        path: 'profile',
+        component: ProfileComponent
     },
     {
         path: "**",

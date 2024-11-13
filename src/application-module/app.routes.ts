@@ -4,6 +4,7 @@ import { HomeModuleComponent } from '../features-modules/home-module/home-module
 import { LoginModuleComponent } from '../features-modules/login-module/login-module.component';
 import { ProfileComponent } from '../features-modules/profile/profile.component';
 import { CategoriesComponent } from '../features-modules/categories/categories.component';
+import { SingleProductComponent } from '../features-modules/single-product/single-product.component';
 
 export const routes: Routes = [
     {
@@ -21,7 +22,11 @@ export const routes: Routes = [
     },
     {
         path: 'categories',
-        component: CategoriesComponent
+        component: CategoriesComponent,
+    },
+    {
+        path: 'category/:id',
+        component: SingleProductComponent
     },
     {
         path: 'profile',

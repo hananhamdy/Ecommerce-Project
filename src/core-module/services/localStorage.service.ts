@@ -13,7 +13,7 @@ export class LocalStorage {
 
   public get(key: string): any {
     if (key)
-      return localStorage.getItem(key);
+      return JSON.parse(localStorage.getItem(key) || 'null');
     return null;
   }
 

@@ -10,6 +10,7 @@ import { UsersResponse } from './users';
 import { Router } from '@angular/router';
 import { User } from '../../core-module/interfaces/user.interface';
 import { CookieService } from 'ngx-cookie-service';
+import { UserService } from '../../core-module/services/user.service';
 
 @Component({
   selector: 'app-login-module',
@@ -23,7 +24,7 @@ export class LoginModuleComponent implements OnInit {
   loginForm: FormGroup = new FormGroup({});
   isUserNotValid = false;
 
-  constructor(private _titleService:Title, private _formBuilder: FormBuilder, private _router: Router, private _cookieService: CookieService) {
+  constructor(private _titleService:Title, private _formBuilder: FormBuilder, private _router: Router, private _userService: UserService) {
     this._titleService.setTitle("Login");
   }
 
@@ -41,13 +42,14 @@ export class LoginModuleComponent implements OnInit {
   submitLoginForm() {
     const usernameInput = this.loginForm.get('username')?.value;
     const passwordInput = this.loginForm.get('password')?.value;
-    UsersResponse.some((user: User) => {
-      if (user.username === usernameInput && user.password === passwordInput) {
-        localStorage.setItem('loggedInUser', JSON.stringify(user));
-        this._router.navigate(['/home']);
-      } else {
-        this.isUserNotValid = true;
-      }
-    });
+    const user = UsersResponse.find((user) => user.username === usernameInput && user.password === passwordInput);
+    console.log(user);
+    if (user) {
+      localStorage.setItem('loggedInUser', JSON.stringify(user));
+      this._userService.user.next(user);
+      this._router.navigate(['/home']);
+    } else {
+      this.isUserNotValid = true;
+    }
   }
 }

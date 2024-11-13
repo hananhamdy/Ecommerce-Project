@@ -3,6 +3,8 @@ import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { User } from '../../interfaces/user.interface';
 import { MatMenuModule } from '@angular/material/menu';
 import { CookieService } from 'ngx-cookie-service';
+import { LocalStorage } from '../../services/localStorage.service';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-header',
@@ -14,17 +16,20 @@ import { CookieService } from 'ngx-cookie-service';
 export class HeaderComponent {
   user: User | null = null;
 
-  constructor(private _router: Router, private _cookieService: CookieService) {
+  constructor(private _router: Router, private _localStorage: LocalStorage, private _userService: UserService) {
   }
 
   ngOnInit(): void {
-    // const userCookie = this._cookieService.get('loggedInUser');
-    // this.user = JSON.parse(userCookie) as User;
+    this._userService.user.subscribe((user: User) => {
+      console.log(user);
+      this.user = user;
+    });
   }
 
   logout() {
-    this._cookieService.delete('loggedInUser');
-    this._router.navigate(['/home']);
+    this.user = null;
+    localStorage.removeItem('loggedInUser');
+    this._router.navigate(['/login']);
   }
 
 }

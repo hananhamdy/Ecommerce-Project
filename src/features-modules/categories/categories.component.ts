@@ -5,12 +5,13 @@ import { Product } from '../../core-module/interfaces/product.interface';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { RouterLink } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-categories',
   standalone: true,
-  imports: [MatCardModule, MatButtonModule, RouterLink],
+  imports: [MatCardModule, MatButtonModule, RouterLink, HttpClientModule],
+  providers: [],
   templateUrl: './categories.component.html',
   styleUrl: './categories.component.scss'
 })
@@ -25,15 +26,9 @@ export class CategoriesComponent implements OnInit {
   }
 
   getProductsList() {
-    // this._http.get(APIs.Products.GetProductsList).subscribe((res: any) => {
-    //   this.productsList = res;
-    //   this.isLoading = false;
-    // });
-    fetch(APIs.Products.GetProductsList)
-      .then(res=>res.json())
-      .then(json=> {
-        this.productsList = json;
-        this.isLoading = false;
-      })
+    this._http.get(APIs.Products.GetProductsList).subscribe((res: any) => {
+      this.productsList = res;
+      this.isLoading = false;
+    });
   }
 }

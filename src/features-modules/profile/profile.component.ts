@@ -3,6 +3,7 @@ import { Title } from '@angular/platform-browser';
 import { User } from '../../core-module/interfaces/user.interface';
 import {MatCardModule} from '@angular/material/card';
 import { CookieService } from 'ngx-cookie-service';
+import { AuthenticationService } from '../../core-module/services/authentication.service';
 
 @Component({
   selector: 'app-profile',
@@ -14,12 +15,14 @@ import { CookieService } from 'ngx-cookie-service';
 export class ProfileComponent {
   user: User | null = null;
 
-  constructor(private _titleService:Title, private _cookieService: CookieService) {
+  constructor(private _titleService:Title, private _authenticationService: AuthenticationService) {
     this._titleService.setTitle("My Profile");
   }
 
   ngOnInit(): void {
-    // const userCookie = this._cookieService.get('loggedInUser');
-    // this.user = JSON.parse(userCookie) as User;
+    this._authenticationService.getCurrentUser().subscribe(user => {
+      this.user = user;
+      console.log(this.user);
+    });
   }
 }

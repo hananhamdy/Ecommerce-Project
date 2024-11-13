@@ -8,8 +8,8 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { ReactiveFormsModule } from '@angular/forms';
 import { UsersResponse } from './users';
 import { Router } from '@angular/router';
-import { CommonCashService } from '../../core-module/services/common-cash-service';
 import { User } from '../../core-module/interfaces/user.interface';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-login-module',
@@ -23,7 +23,7 @@ export class LoginModuleComponent implements OnInit {
   loginForm: FormGroup = new FormGroup({});
   isUserNotValid = false;
 
-  constructor(private _titleService:Title, private _formBuilder: FormBuilder, private _router: Router, private _commonCashService: CommonCashService) {
+  constructor(private _titleService:Title, private _formBuilder: FormBuilder, private _router: Router, private _cookieService: CookieService) {
     this._titleService.setTitle("Login");
   }
 
@@ -43,7 +43,7 @@ export class LoginModuleComponent implements OnInit {
     const passwordInput = this.loginForm.get('password')?.value;
     UsersResponse.some((user: User) => {
       if (user.username === usernameInput && user.password === passwordInput) {
-        this._commonCashService.setUser(user);
+        localStorage.setItem('loggedInUser', JSON.stringify(user));
         this._router.navigate(['/home']);
       } else {
         this.isUserNotValid = true;

@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { User } from '../../interfaces/user.interface';
-import { CommonCashService } from '../../services/common-cash-service';
 import { MatMenuModule } from '@angular/material/menu';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-header',
@@ -14,17 +14,16 @@ import { MatMenuModule } from '@angular/material/menu';
 export class HeaderComponent {
   user: User | null = null;
 
-  constructor(private _commonCashService: CommonCashService, private _router: Router) {
+  constructor(private _router: Router, private _cookieService: CookieService) {
   }
 
   ngOnInit(): void {
-    this._commonCashService.currentUser$.subscribe((user) => {
-      this.user = user;
-    });
+    // const userCookie = this._cookieService.get('loggedInUser');
+    // this.user = JSON.parse(userCookie) as User;
   }
 
   logout() {
-    this._commonCashService.clearUser();
+    this._cookieService.delete('loggedInUser');
     this._router.navigate(['/home']);
   }
 

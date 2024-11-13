@@ -9,6 +9,7 @@ export const UsersResponse = [
   },
   {
     "id": 2,
+    "email": "user@gmail.com",
     "username": "user",
     "password": "user",
     "role": "user",

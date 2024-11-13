@@ -5,6 +5,8 @@ import { LoginModuleComponent } from '../features-modules/login-module/login-mod
 import { ProfileComponent } from '../features-modules/profile/profile.component';
 import { CategoriesComponent } from '../features-modules/categories/categories.component';
 import { SingleProductComponent } from '../features-modules/single-product/single-product.component';
+import { NotAuthorizedGuard } from '../core-module/routing-guards/notAutherized.guard';
+import { AuthorizedGuard } from '../core-module/routing-guards/autherized.guard';
 
 export const routes: Routes = [
     {
@@ -13,23 +15,27 @@ export const routes: Routes = [
         pathMatch: 'full',
     },
     {
-        path: 'login',
-        component: LoginModuleComponent
-    },
-    {
         path: 'home',
         component: HomeModuleComponent
     },
     {
+        path: 'login',
+        canActivate: [NotAuthorizedGuard],
+        component: LoginModuleComponent
+    },
+    {
         path: 'categories',
+        canActivate: [AuthorizedGuard],
         component: CategoriesComponent,
     },
     {
         path: 'category/:id',
+        canActivate: [AuthorizedGuard],
         component: SingleProductComponent
     },
     {
         path: 'profile',
+        canActivate: [AuthorizedGuard],
         component: ProfileComponent
     },
     {

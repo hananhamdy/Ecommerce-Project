@@ -3,10 +3,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { Product } from '../../core-module/interfaces/product.interface';
 import { User } from '../../core-module/interfaces/user.interface';
-import { CommonCashService } from '../../core-module/services/common-cash-service';
 import { Title } from '@angular/platform-browser';
 import { APIs } from '../../core-module/configs/APIs.config';
 import { ActivatedRoute } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-single-product',
@@ -21,14 +21,13 @@ export class SingleProductComponent {
   productId: string = ''
   isLoading = false;
 
-  constructor(private _titleService:Title, private _commonCashService: CommonCashService, private _route: ActivatedRoute) {
+  constructor(private _titleService:Title, private _route: ActivatedRoute, private _cookieService: CookieService) {
     this._titleService.setTitle("Single Product");
   }
 
   ngOnInit(): void {
-    this._commonCashService.currentUser$.subscribe((user) => {
-      this.user = user;
-    });
+    // const userCookie = this._cookieService.get('loggedInUser');
+    // this.user = JSON.parse(userCookie) as User;
     this.getProductDetails();
   }
 

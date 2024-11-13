@@ -22,7 +22,6 @@ export class HeaderComponent {
   ngOnInit(): void {
     this._authenticationService.getCurrentUser().subscribe(user => {
       this.user = user;
-      console.log(this.user);
     });
   }
 

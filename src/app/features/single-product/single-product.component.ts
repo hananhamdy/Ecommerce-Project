@@ -7,11 +7,12 @@ import { CookieService } from 'ngx-cookie-service';
 import { User } from '../../core/interfaces/user.interface';
 import { APIs } from '../../core/configs/APIs.config';
 import { AuthenticationService } from '../../core/services/authentication.service';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-single-product',
   standalone: true,
-  imports: [MatCardModule, MatButtonModule],
+  imports: [MatCardModule, MatButtonModule, HttpClientModule],
   templateUrl: './single-product.component.html',
   styleUrl: './single-product.component.scss'
 })
@@ -21,14 +22,13 @@ export class SingleProductComponent {
   productId: string = ''
   isLoading = false;
 
-  constructor(private _titleService:Title, private _route: ActivatedRoute, private _authenticationService: AuthenticationService) {
-    this._titleService.setTitle("Single Product");
+  constructor(private _titleService:Title, private _route: ActivatedRoute, private _authenticationService: AuthenticationService, private _http: HttpClient) {
+    
   }
 
   ngOnInit(): void {
     this._authenticationService.getCurrentUser().subscribe(user => {
       this.user = user;
-      console.log(this.user);
     });
     this.getProductDetails();
   }
@@ -37,11 +37,10 @@ export class SingleProductComponent {
     this._route.paramMap.subscribe(params => {
       this.productId = params.get('id') as string;
     });
-    fetch(APIs.Products.GetProduct + this.productId)
-      .then(res=>res.json())
-      .then(json=> {
-        this.productsDetails = json;
-        this.isLoading = false;
-      })
+    this._http.get(APIs.Products.GetProduct + this.productId).subscribe((res: any) => {
+      this.productsDetails = res;
+      this._titleService.setTitle(this.productsDetails.title);
+      this.isLoading = false;
+    });
   }
 }

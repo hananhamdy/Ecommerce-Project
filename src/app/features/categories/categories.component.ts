@@ -10,6 +10,7 @@ import { MatOption, MatSelect } from '@angular/material/select';
 import { NoDataComponent } from '../../shared/components/no-data/no-data.component';
 import { AuthenticationService } from '../../core/services/authentication.service';
 import { User } from '../../core/interfaces/user.interface';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-categories',
@@ -26,13 +27,13 @@ export class CategoriesComponent implements OnInit {
   selected = 'All';
   isLoading = false;
 
-  constructor(private _http: HttpClient, private _authenticationService: AuthenticationService) {
+  constructor(private _titleService: Title, private _http: HttpClient, private _authenticationService: AuthenticationService) {
+    this._titleService.setTitle("Categories");
   }
 
   ngOnInit() {
     this._authenticationService.getCurrentUser().subscribe(user => {
       this.user = user;
-      console.log(this.user);
     });
     this.getCategoriesList();
     this.getProductsList();

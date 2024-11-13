@@ -12,12 +12,6 @@
                 <mat-card-content>
                     {{productsDetails.description}}
                 </mat-card-content>
-                <mat-card-actions>
-                    @if (user && user.role == 'admin') {
-                        <button mat-button>Edit</button>
-                        <button mat-button>Delete</button>
-                    }
-                </mat-card-actions>
             </mat-card>
         </div>
     </div>

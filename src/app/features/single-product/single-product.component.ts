@@ -18,19 +18,15 @@ import { ProductDetails } from '../../core/interfaces/product-details.interface'
   styleUrl: './single-product.component.scss'
 })
 export class SingleProductComponent {
-  user: User | null = null;
   productsDetails: ProductDetails = {};
   productId: string = ''
   isLoading = false;
 
-  constructor(private _titleService:Title, private _route: ActivatedRoute, private _authenticationService: AuthenticationService, private _http: HttpClient) {
+  constructor(private _titleService:Title, private _route: ActivatedRoute, private _http: HttpClient) {
     
   }
 
   ngOnInit(): void {
-    this._authenticationService.getCurrentUser().subscribe(user => {
-      this.user = user;
-    });
     this.getProductDetails();
   }
 

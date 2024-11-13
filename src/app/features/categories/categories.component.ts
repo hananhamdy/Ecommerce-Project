@@ -23,6 +23,7 @@ export class CategoriesComponent implements OnInit {
   user: User | null = null;
   productsList: Product[] = [];
   categoriesList: Product[] = [];
+  selected = 'All';
   isLoading = false;
 
   constructor(private _http: HttpClient, private _authenticationService: AuthenticationService) {

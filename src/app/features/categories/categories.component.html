@@ -2,7 +2,7 @@
     <div class="container">
         <mat-form-field>
             <mat-label>Select Category</mat-label>
-            <mat-select>
+            <mat-select [(value)]="selected">
                 @for (item of categoriesList; track item) {
                     <mat-option (click)="selectCategory(item)" [value]="item">{{item}}</mat-option>
                 }

@@ -9,8 +9,8 @@ import { Title } from '@angular/platform-browser';
   styleUrl: './home-module.component.scss'
 })
 export class HomeModuleComponent {
-  constructor(private titleService:Title) {
-    this.titleService.setTitle("Home Page");
+  constructor(private _titleService:Title) {
+    this._titleService.setTitle("Home Page");
   }
 
 }

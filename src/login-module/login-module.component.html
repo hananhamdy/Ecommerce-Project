@@ -1,7 +1,30 @@
 <section class="section">
     <div class="container">
         <div class="card">
-            <h1>Welcome user :)</h1>
+            <form class="form flex flex-center" [formGroup]="loginForm">
+                <div class="section-head">
+                    <h1 class="section-title">Login</h1>
+                    <p class="section-sub-title">Enter your username and password to logged in:</p>
+                </div>
+                <mat-form-field class="form-field" appearance="outline">
+                    <mat-label>Email</mat-label>
+                    <input type="email" matInput formControlName="email">
+                    @if (loginForm.get('email')?.hasError('required')) {
+                        <mat-error>Email is required</mat-error>
+                    }
+                    @if (loginForm.get('email')?.hasError('email')) {
+                        <mat-error>Invalid email</mat-error>
+                    }
+                </mat-form-field>
+                <mat-form-field class="form-field" appearance="outline">
+                    <mat-label>Password</mat-label>
+                    <input type="password" matInput formControlName="password">
+                    @if (loginForm.get('password')?.hasError('required')) {
+                        <mat-error>Password is required</mat-error>
+                    }
+                </mat-form-field>
+                <button class="" mat-stroked-button (click)="submit()" [disabled]="loginForm.invalid">LOGIN</button>
+            </form>
         </div>
     </div>
 </section>

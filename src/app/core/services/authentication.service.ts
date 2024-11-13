@@ -8,7 +8,7 @@ import { User } from '../interfaces/user.interface';
   providedIn: 'root',
 })
 export class AuthenticationService {
-  user: BehaviorSubject<any> = new BehaviorSubject<any>(null);
+  user: BehaviorSubject<User | null> = new BehaviorSubject<User | null>(null);
   private userKey: string = "loggedInUser";
 
   public onLogout: EventEmitter<void> = new EventEmitter<void>();
@@ -20,7 +20,7 @@ export class AuthenticationService {
 
   public getCurrentUser() {
     const user = this.localStorage.get(this.userKey);
-    this.user.next(user);
+    this.user.next(user as User | null);
     return this.user;
   }
   

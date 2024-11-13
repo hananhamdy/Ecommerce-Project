@@ -23,7 +23,7 @@ import { Title } from '@angular/platform-browser';
 export class CategoriesComponent implements OnInit {
   user: User | null = null;
   productsList: Product[] = [];
-  categoriesList: Product[] = [];
+  categoriesList: string[] = [];
   selected = 'All';
   isLoading = false;
 
@@ -40,27 +40,27 @@ export class CategoriesComponent implements OnInit {
   }
 
   getCategoriesList() {
-    this._http.get(APIs.Products.GetCategoriesList).subscribe((res: any) => {
-      this.categoriesList = ['All', ...res];;
+    this._http.get<string[]>(APIs.Products.GetCategoriesList).subscribe((res) => {
+      this.categoriesList = ['All', ...res];
       this.isLoading = false;
     });
   }
 
   getProductsList() {
     this.isLoading = true;
-    this._http.get(APIs.Products.GetProductsList).subscribe((res: any) => {
+    this._http.get<Product[]>(APIs.Products.GetProductsList).subscribe((res) => {
       this.productsList = res;
       this.isLoading = false;
     });
   }
 
-  selectCategory(item: any) {
+  selectCategory(item: String) {
     this.isLoading = true;
     if(item == 'All') {
       this.getProductsList();
       return;
     }
-    this._http.get(APIs.Products.GetCategory + item).subscribe((res: any) => {
+    this._http.get<Product[]>(APIs.Products.GetCategory + item).subscribe((res) => {
       this.productsList = res;
       this.isLoading = false;
     });

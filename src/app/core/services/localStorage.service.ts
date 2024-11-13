@@ -7,13 +7,14 @@ import { Injectable } from "@angular/core";
 export class LocalStorage {
   
   public set(key: string, value: string): void {
-    if (key && value)
-      localStorage.setItem(key, value);
+    if (key && value) localStorage.setItem(key, value);
   }
 
-  public get(key: string): any {
-    if (key)
-      return JSON.parse(localStorage.getItem(key) || 'null');
+  public get<T>(key: string): T | null {
+    if (key) {
+      const item = localStorage.getItem(key);
+      return item ? JSON.parse(item) as T : null;
+    }
     return null;
   }
 

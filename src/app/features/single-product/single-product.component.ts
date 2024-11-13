@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
-import { Product } from '../../core-module/interfaces/product.interface';
-import { User } from '../../core-module/interfaces/user.interface';
 import { Title } from '@angular/platform-browser';
-import { APIs } from '../../core-module/configs/APIs.config';
 import { ActivatedRoute } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
+import { User } from '../../core/interfaces/user.interface';
+import { APIs } from '../../core/configs/APIs.config';
 
 @Component({
   selector: 'app-single-product',

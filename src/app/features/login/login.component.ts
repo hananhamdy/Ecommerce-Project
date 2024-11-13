@@ -6,21 +6,20 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
-import { UsersResponse } from './users';
 import { Router } from '@angular/router';
-import { User } from '../../core-module/interfaces/user.interface';
-import { CookieService } from 'ngx-cookie-service';
-import { AuthenticationService } from '../../core-module/services/authentication.service';
+import { AuthenticationService } from '../../core/services/authentication.service';
+import { UsersResponse } from './users';
+
 
 @Component({
-  selector: 'app-login-module',
+  selector: 'app-login',
   standalone: true,
   imports: [ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatIconModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  templateUrl: './login-module.component.html',
-  styleUrl: './login-module.component.scss'
+  templateUrl: './login.component.html',
+  styleUrl: './login.component.scss'
 })
-export class LoginModuleComponent implements OnInit {
+export class LoginComponent implements OnInit {
   loginForm: FormGroup = new FormGroup({});
   isUserNotValid = false;
 

@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { HeaderComponent } from "../core-module/components/header/header.component";
-import { FooterComponent } from "../core-module/components/footer/footer.component";
 import { Title } from '@angular/platform-browser';
-import { AuthorizedGuard } from '../core-module/routing-guards/autherized.guard';
-import { NotAuthorizedGuard } from '../core-module/routing-guards/notAutherized.guard';
+import { HeaderComponent } from './core/components/header/header.component';
+import { FooterComponent } from './core/components/footer/footer.component';
+import { NotAuthorizedGuard } from './core/guards/notAutherized.guard';
+import { AuthorizedGuard } from './core/guards/autherized.guard';
 
 @Component({
   selector: 'app-root',

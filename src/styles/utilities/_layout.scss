@@ -1,37 +1,32 @@
+@import '../helpers/imports';
 
-.layout {
-    .container {
-      width: 100%;
-      margin-right: auto;
-      margin-left: auto;
-      padding-right: 1rem /* 14px */;
-      padding-left: 1rem /* 14px */;
-    }
-    @media (min-width: 576px) {
-        .container {
-            max-width: 576px;
-        }
-    }
-    @media (min-width: 768px) {
-        .container {
-            max-width: 768px;
-        }
-    }
-    @media (min-width: 992px) {
-        .container {
-            max-width: 992px;
-        }
-    }
-    @media (min-width: 1200px) {
-        .container {
-            padding: 0 50px;
-            width: 100%;
-            max-width: none;
-        }
-    }
-  }
+.container {
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: 1rem /* 14px */;
+    padding-left: 1rem /* 14px */;
 
-  .section {
+    @include media-query($sm) {
+        max-width: 576px;
+    }
+
+    @include media-query($md) {
+        max-width: 768px;
+    }
+
+    @include media-query($lg) {
+        max-width: 992px;
+    }
+
+    @include media-query($xl) {
+        padding: 0 50px;
+        width: 100%;
+        max-width: none;
+    }
+}
+
+.section {
     padding: 50px 0;
     z-index: 0;
     position: relative;

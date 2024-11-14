@@ -9,9 +9,11 @@
                     }
                 </mat-select>
             </mat-form-field>
-            <div>
-                <button class="btn secondary" (click)="openDialog('add')">Add Product</button>
-            </div>
+            @if (user?.role == 'admin') {
+                <div>
+                    <button class="btn secondary" (click)="openDialog('add')">Add Product</button>
+                </div>
+            }
         </div>
         <div class="cards-wrapper">
             @if (isLoading) {

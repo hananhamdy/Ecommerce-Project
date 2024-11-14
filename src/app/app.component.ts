@@ -3,7 +3,7 @@ import { RouterOutlet } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { HeaderComponent } from './core/components/header/header.component';
 import { FooterComponent } from './core/components/footer/footer.component';
-import { NotAuthorizedGuard } from './core/guards/notAutherized.guard';
+import { NotAuthorizedGuard } from './core/guards/not-autherized.guard';
 import { AuthorizedGuard } from './core/guards/autherized.guard';
 
 @Component({

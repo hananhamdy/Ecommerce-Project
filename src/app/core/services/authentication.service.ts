@@ -1,6 +1,6 @@
 import { EventEmitter, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { LocalStorage } from './localStorage.service';
+import { LocalStorage } from './local-storage.service';
 import { BehaviorSubject } from 'rxjs';
 import { User } from '../interfaces/user.interface';
 

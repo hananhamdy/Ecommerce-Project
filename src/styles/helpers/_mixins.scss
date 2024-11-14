@@ -34,7 +34,7 @@
 }
 
 // font
-@mixin font($fontSize: "16px",$fontFamily: "regular") {
+@mixin font($fontSize: "18px",$fontFamily: "regular") {
     font-size: $fontSize;
     font-family: ('Tajawal-' + $fontFamily) !important;
 }

@@ -3,6 +3,7 @@ import { Title } from '@angular/platform-browser';
 import {MatCardModule} from '@angular/material/card';
 import { User } from '../../core/interfaces/user.interface';
 import { AuthenticationService } from '../../core/services/authentication.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profile',

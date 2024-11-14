@@ -7,11 +7,11 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+        height: 80px;
     }
 
     &-logo {
-        font-size: 1rem;
-        font-weight: bold;
+        @include font(20px, 'bold')
     }
 
     &-list {
@@ -33,9 +33,10 @@
         }
 
         &-link {
-            padding: 1rem 0;
+            padding: 0;
             display: inline-block;
 
+            &:hover,
             &.active {
                 color: $color-primary;
             }

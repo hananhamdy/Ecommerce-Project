@@ -8,8 +8,20 @@
 }
 
 .card-product {
-    flex-basis: calc((100% - 30px)/ 4);
+    flex-basis: 100%;
     text-align: center;
+
+    @include media-query($md) {
+      flex-basis: calc((100% - 20px)/ 2);
+    }
+
+    @include media-query($lg) {
+      flex-basis: calc((100% - 20px)/ 3);
+    }
+
+    @include media-query($xl) {
+      flex-basis: calc((100% - 30px)/ 4);
+    }
 
     .mat-mdc-card-image {
         height: 300px;
@@ -21,16 +33,4 @@
         }
     }
 
-  }
-
-  @media (max-width: 1024px) {
-    .card-product {
-      flex-basis: calc((100% - 20px)/ 2);
-    }
-  }
-  
-  @media (max-width: 700px) {
-    .card-product {
-      flex-basis: 100%;
-    }
   }

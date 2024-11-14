@@ -21,3 +21,24 @@
 .d-none {
   display: none;
 }
+
+.card,
+.card.mat-mdc-card {
+  background-color: $color-white;
+  padding: 1rem;
+  border-radius: 1rem;
+  box-shadow: none;
+
+  .mat-mdc-card-header {
+    padding: 0;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+
+    .mat-mdc-card-title-group {
+      justify-content: center;
+      text-align: center;
+    }
+  }
+}

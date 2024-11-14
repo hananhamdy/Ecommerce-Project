@@ -1,11 +1,19 @@
 
-* { @include prefixer(box-sizing, border-box, webkit moz o ms); }
+* {
+    @include prefixer(box-sizing, border-box, webkit moz o ms);
+}
+
 html, body, * {
     margin: 0;
     padding: 0;
 }
 
-html, body { height: 100%;  width: 100%;}
+html, body {
+    height: 100%;
+    width: 100%;
+    font-size: 18px;
+    background-color: $color-light-grey;
+}
 
 ul {
     list-style: none;
@@ -15,8 +23,9 @@ ul {
 
 a, a:not([href]):not([tabindex]), a:hover, a:not([href]):not([tabindex]):hover {
     text-decoration: none;
-    color:$color-primary;
+    color:$color-body;
     cursor: pointer;
+    @include font(1rem, 'medium');
 }
 
 a:hover {
@@ -30,5 +39,5 @@ svg {
 
 body, button, a, span, strong, p, h1, h2, h3, h4, h5, h6, .mat-checkbox, .mat-table, .mat-list-item, .mat-mdc-card-title, label,select,
 .mat-form-field, input, textarea, .mat-card, :host .mat-expansion-panel-content {
-    font-family: $mainFont !important;
+    font-family: $mainFont;
 }

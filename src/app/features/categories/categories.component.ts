@@ -91,7 +91,7 @@ export class CategoriesComponent implements OnInit {
   }
 
   addProduct(product: Product) {
-    const body = product;
+    const body = {...product, image: 'https://fakestoreapi.com/img/51UDEzMJVpL._AC_UL640_QL65_ML3_.jpg'};
     this._http.post<Product[]>(APIs.Products.AddProduct, body).subscribe((res) => {
       if (res && typeof res !== 'string') {
         this.productsList.unshift(res as Product);

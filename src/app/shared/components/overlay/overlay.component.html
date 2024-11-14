@@ -1,28 +1,26 @@
 <h1>{{data.isAdd ? 'Add new product' : 'Edit product'}}</h1>
-<button (click)="dialogRef.close({
-  title: 'test product',
-  price: '13.5',
-  description: 'lorem ipsum set',
-  image: 'https://i.pravatar.cc',
-  category: 'electronic'
-})">OK</button>
 <div>
-  My favorite animal is:
-  <ul>
-    <li>
-      @if (data.animal === 'panda') {
-        <span>&#10003;</span>
-      } Panda
-    </li>
-    <li>
-      @if (data.animal === 'unicorn') {
-        <span>&#10003;</span>
-      } Unicorn
-    </li>
-    <li>
-      @if (data.animal === 'lion') {
-        <span>&#10003;</span>
-      } Lion
-    </li>
-  </ul>
+  <form class="form flex flex-center" [formGroup]="submitForm">
+    <mat-form-field>
+      <mat-label>Title</mat-label>
+      <input matInput formControlName="title">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Price</mat-label>
+      <input matInput formControlName="price">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Description</mat-label>
+      <textarea matInput formControlName="description"></textarea>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Category</mat-label>
+      <mat-select formControlName="category">
+        @for (item of categoriesList; track $index) {
+          <mat-option [value]="item">{{item}}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+  </form>
 </div>
+<button (click)="dialogRef.close(submitForm.value)">OK</button>

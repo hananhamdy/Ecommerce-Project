@@ -70,12 +70,24 @@ export class CategoriesComponent implements OnInit {
   }
 
   deleteProduct(item: Product) {
+    this._http.delete<Product[]>(APIs.Products.DeleteProduct + item.id).subscribe((res) => {
+      // in normal case, we call api again to get the updated list after delete the item
+      // this.getProductsList();
+      // but for now, we just remove the item from the list
+      this.productsList = this.productsList.filter(product => product.id !== item.id);
+      this._snackBar.open('Product deleted successfully', 'Close', {
+        duration: 2000,
+      });
+    });
+  }
+
+  updateProduct(item: Product) {
     this._snackBar.open('Not implemented yet', 'Close', {
       duration: 2000,
     });
   }
 
-  updateProduct(item: Product) {
+  addProduct() {
     this._snackBar.open('Not implemented yet', 'Close', {
       duration: 2000,
     });

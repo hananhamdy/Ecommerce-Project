@@ -1,13 +1,18 @@
 <section class="section">
     <div class="container">
-        <mat-form-field class="select-menu">
-            <mat-label>Select Category</mat-label>
-            <mat-select [(value)]="selected">
-                @for (item of categoriesList; track item) {
-                    <mat-option (click)="selectCategory(item)" [value]="item">{{item}}</mat-option>
-                }
-            </mat-select>
-        </mat-form-field>
+        <div class="section-head-wrapper">
+            <mat-form-field class="select-menu">
+                <mat-label>Select Category</mat-label>
+                <mat-select [(value)]="selected">
+                    @for (item of categoriesList; track item) {
+                        <mat-option (click)="selectCategory(item)" [value]="item">{{item}}</mat-option>
+                    }
+                </mat-select>
+            </mat-form-field>
+            <div>
+                <button class="btn secondary" (click)="addProduct()">Add Product</button>
+            </div>
+        </div>
         <div class="cards-wrapper">
             @if (isLoading) {
                 <div class="card w-100">

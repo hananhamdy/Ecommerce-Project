@@ -2,8 +2,6 @@ import { Component } from '@angular/core';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { User } from '../../interfaces/user.interface';
 import { MatMenuModule } from '@angular/material/menu';
-import { CookieService } from 'ngx-cookie-service';
-import { LocalStorage } from '../../services/local-storage.service';
 import { AuthenticationService } from '../../services/authentication.service';
 
 @Component({

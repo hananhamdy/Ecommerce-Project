@@ -7,7 +7,6 @@ import { ProfileComponent } from './features/profile/profile.component';
 import { OopsComponent } from './shared/components/oops/oops.component';
 import { AuthorizedGuard } from './core/guards/autherized.guard';
 import { NotAuthorizedGuard } from './core/guards/not-autherized.guard';
-import { DashboardComponent } from './features/dashboard/dashboard.component';
 
 export const routes: Routes = [
     {
@@ -23,11 +22,6 @@ export const routes: Routes = [
         path: 'login',
         canActivate: [NotAuthorizedGuard],
         component: LoginComponent
-    },
-    {
-        path: 'dashboard',
-        canActivate: [AuthorizedGuard],
-        component: DashboardComponent,
     },
     {
         path: 'categories',

@@ -12,9 +12,6 @@
                     <li><a class="header-list-link" [routerLinkActive]="'active'" [routerLink]="'/home'">Home</a></li>
                     @if(user) {
                         <li><a class="header-list-link" [routerLinkActive]="'active'" [routerLink]="'/categories'">Categories</a></li>
-                        @if (user.role == 'admin') {
-                            <li><a class="header-list-link" [routerLinkActive]="'active'" [routerLink]="'/dashboard'">Dashboard</a></li>
-                        }
                         <li><a class="header-list-link" [routerLinkActive]="'active'" [routerLink]="'/profile'">Profile</a></li>
                         <li><a class="header-list-link" (click)="logout()">Logout</a></li>
                     } @else {

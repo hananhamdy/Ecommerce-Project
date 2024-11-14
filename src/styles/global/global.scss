@@ -1,0 +1,34 @@
+
+* { @include prefixer(box-sizing, border-box, webkit moz o ms); }
+html, body, * {
+    margin: 0;
+    padding: 0;
+}
+
+html, body { height: 100%;  width: 100%;}
+
+ul {
+    list-style: none;
+    margin:0;
+    padding: 0;
+}
+
+a, a:not([href]):not([tabindex]), a:hover, a:not([href]):not([tabindex]):hover {
+    text-decoration: none;
+    color:$color-primary;
+    cursor: pointer;
+}
+
+a:hover {
+    cursor: pointer;
+}
+
+svg {
+    width: 100%;
+    height: 100%;
+}
+
+body, button, a, span, strong, p, h1, h2, h3, h4, h5, h6, .mat-checkbox, .mat-table, .mat-list-item, .mat-mdc-card-title, label,select,
+.mat-form-field, input, textarea, .mat-card, :host .mat-expansion-panel-content {
+    font-family: $mainFont !important;
+}

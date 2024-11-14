@@ -1,0 +1,8 @@
+// Colors
+.color {
+    @each $color in $colorsList {
+      &-#{"" + nth($color, 1)} { 
+        color: nth($color, 2); 
+      }
+    }
+  }

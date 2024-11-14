@@ -28,6 +28,32 @@
   padding: 2rem;
   border-radius: 1rem;
   box-shadow: none;
+  border: 0;
+  display: flex;
+  flex-direction: column;
+
+  .card-meta {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap:1rem;
+    width: 100%;
+    
+    .mat-mdc-card-subtitle {
+      color: $color-anthracite;
+      @include font(16px, medium);
+    }
+
+    .price {
+      color: $color-primary;
+      @include font(24px, medium);
+    }
+  }
+
+  .mat-mdc-card-title {
+    @include font(24px, medium);
+    text-align: left;
+  }
 
   .mat-mdc-card-header {
     padding: 0;

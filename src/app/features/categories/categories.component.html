@@ -21,11 +21,13 @@
                         </div>
                         <mat-card-header>
                             <mat-card-title>{{product.title}}</mat-card-title>
-                            <mat-card-subtitle>{{product.price}}</mat-card-subtitle>
-                            <mat-card-subtitle>{{product.category}}</mat-card-subtitle>
+                            <div class="card-meta">
+                                <mat-card-subtitle class="price">{{product.price}}</mat-card-subtitle>
+                                <mat-card-subtitle>{{product.category}}</mat-card-subtitle>
+                            </div>
                         </mat-card-header>
                         <mat-card-actions>
-                            <button [routerLink]="'/category/' + product.id" mat-button>show more</button>
+                            <button class="btn primary" [routerLink]="'/category/' + product.id">show more</button>
                             @if (user && user.role == 'admin') {
                                 <button mat-button (click)="updateProduct(product)">Edit</button>
                                 <button mat-button (click)="deleteProduct(product)">Delete</button>

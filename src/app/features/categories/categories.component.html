@@ -9,27 +9,33 @@
             </mat-select>
         </mat-form-field>
         <div class="cards-wrapper">
-            @for (product of productsList; track $index) {
-                <mat-card class="card card-product" appearance="outlined">
-                    <div mat-card-image>
-                        <img [src]="product.image" [alt]="product.title">
-                    </div>
-                    <mat-card-header>
-                        <mat-card-title>{{product.title}}</mat-card-title>
-                        <mat-card-subtitle>{{product.price}}</mat-card-subtitle>
-                    </mat-card-header>
-                    <mat-card-actions>
-                        <button [routerLink]="'/category/' + product.id" mat-button>show more</button>
-                        @if (user && user.role == 'admin') {
-                            <button mat-button (click)="updateProduct(product)">Edit</button>
-                            <button mat-button (click)="deleteProduct(product)">Delete</button>
-                        }
-                    </mat-card-actions>
-                </mat-card>
-            } @empty {
+            @if (isLoading) {
                 <div class="w-100">
-                    <app-no-data></app-no-data>
+                    <app-loading [repeat]="5"></app-loading>
                 </div>
+            } @else {
+                @for (product of productsList; track $index) {
+                    <mat-card class="card card-product" appearance="outlined">
+                        <div mat-card-image>
+                            <img [src]="product.image" [alt]="product.title">
+                        </div>
+                        <mat-card-header>
+                            <mat-card-title>{{product.title}}</mat-card-title>
+                            <mat-card-subtitle>{{product.price}}</mat-card-subtitle>
+                        </mat-card-header>
+                        <mat-card-actions>
+                            <button [routerLink]="'/category/' + product.id" mat-button>show more</button>
+                            @if (user && user.role == 'admin') {
+                                <button mat-button (click)="updateProduct(product)">Edit</button>
+                                <button mat-button (click)="deleteProduct(product)">Delete</button>
+                            }
+                        </mat-card-actions>
+                    </mat-card>
+                } @empty {
+                    <div class="w-100">
+                        <app-no-data></app-no-data>
+                    </div>
+                }
             }
         </div>
     </div>

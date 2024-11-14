@@ -12,11 +12,12 @@ import { AuthenticationService } from '../../core/services/authentication.servic
 import { User } from '../../core/interfaces/user.interface';
 import { Title } from '@angular/platform-browser';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { LoadingComponent } from "../../shared/components/loading/loading.component";
 
 @Component({
   selector: 'app-categories',
   standalone: true,
-  imports: [NoDataComponent,MatCardModule, MatButtonModule, RouterLink, HttpClientModule, MatLabel, MatSelect, MatFormField, MatOption],
+  imports: [NoDataComponent, MatCardModule, MatButtonModule, RouterLink, HttpClientModule, MatLabel, MatSelect, MatFormField, MatOption, LoadingComponent],
   providers: [],
   templateUrl: './categories.component.html',
   styleUrl: './categories.component.scss'

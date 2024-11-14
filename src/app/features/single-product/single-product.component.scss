@@ -1,0 +1,31 @@
+@import '/helpers/imports';
+
+.card {
+    &-product {
+        width: 100%;
+        margin: auto;
+
+        @include media-query($md) {
+            max-width: 80%;
+        }
+    
+        @include media-query($lg) {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 1rem;
+            max-width: 60%;
+        }
+
+        .mat-mdc-card-image {
+            img {
+                width: 100%;
+            }
+        }
+
+        .mat-mdc-card-content {
+            padding: 0;
+            margin-top: 1rem;
+        }
+    }
+}

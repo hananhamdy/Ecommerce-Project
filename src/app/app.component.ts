@@ -16,6 +16,6 @@ import { AuthorizedGuard } from './core/guards/autherized.guard';
 })
 export class AppComponent {
   constructor(private _titleService:Title) {
-    this._titleService.setTitle("STC Task");
+    this._titleService.setTitle("Ecommerce Project");
   }
 }

@@ -6,7 +6,7 @@ import {
   OverlayModule,
   SelectionModel,
   ViewportRuler
-} from "./chunk-SLPPVIBW.js";
+} from "./chunk-IOKRNKSI.js";
 import {
   FormGroupDirective,
   NgControl,
@@ -23,7 +23,7 @@ import {
   MatLabel,
   MatPrefix,
   MatSuffix
-} from "./chunk-CHQTU2Z4.js";
+} from "./chunk-6SDEVJXN.js";
 import {
   animate,
   animateChild,
@@ -34,30 +34,32 @@ import {
   trigger
 } from "./chunk-5JSYV6EP.js";
 import {
-  A,
-  ActiveDescendantKeyManager,
-  DOWN_ARROW,
-  Directionality,
-  ENTER,
   ErrorStateMatcher,
-  LEFT_ARROW,
-  LiveAnnouncer,
   MAT_OPTGROUP,
   MAT_OPTION_PARENT_COMPONENT,
   MatCommonModule,
   MatOptgroup,
   MatOption,
   MatOptionModule,
+  _ErrorStateTracker,
+  _countGroupLabelsBeforeOption,
+  _getOptionScrollPosition
+} from "./chunk-J5ZD4HB3.js";
+import {
+  A,
+  ActiveDescendantKeyManager,
+  DOWN_ARROW,
+  Directionality,
+  ENTER,
+  LEFT_ARROW,
+  LiveAnnouncer,
   RIGHT_ARROW,
   SPACE,
   UP_ARROW,
-  _ErrorStateTracker,
-  _countGroupLabelsBeforeOption,
-  _getOptionScrollPosition,
   addAriaReferencedId,
   hasModifierKey,
   removeAriaReferencedId
-} from "./chunk-DN2Q3A2M.js";
+} from "./chunk-5CEDAYHC.js";
 import {
   CommonModule,
   NgClass

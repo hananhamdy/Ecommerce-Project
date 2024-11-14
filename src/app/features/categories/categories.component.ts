@@ -13,6 +13,8 @@ import { User } from '../../core/interfaces/user.interface';
 import { Title } from '@angular/platform-browser';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { LoadingComponent } from "../../shared/components/loading/loading.component";
+import { Dialog } from '@angular/cdk/dialog';
+import { OverlayComponent } from '../../shared/components/overlay/overlay.component';
 
 @Component({
   selector: 'app-categories',
@@ -23,6 +25,7 @@ import { LoadingComponent } from "../../shared/components/loading/loading.compon
   styleUrl: './categories.component.scss'
 })
 export class CategoriesComponent implements OnInit {
+  dialog = inject(Dialog);
   private _snackBar = inject(MatSnackBar);
   user: User | null = null;
   productsList: Product[] = [];
@@ -87,9 +90,42 @@ export class CategoriesComponent implements OnInit {
     });
   }
 
-  addProduct() {
-    this._snackBar.open('Not implemented yet', 'Close', {
-      duration: 2000,
+  addProduct(product: Product) {
+    const body = product;
+    this._http.post<Product[]>(APIs.Products.AddProduct, body).subscribe((res) => {
+      if (res && typeof res !== 'string') {
+        this.productsList.unshift(res as Product);
+        this._snackBar.open('Product added successfully', 'Close', {
+          duration: 2000,
+        });
+      } else {
+        this._snackBar.open('Something went wrong!', 'Close', {
+          duration: 2000,
+        });
+      }
+    }, (error) => {
+      this._snackBar.open('Something went wrong!', 'Close', {
+        duration: 2000,
+      });
+    });
+  }
+
+  openDialog(type: string): void {
+    const dialogRef = this.dialog.open<string>(OverlayComponent, {
+      width: '300px',
+      data: {
+        isAdd: type == 'add',
+      },
+    });
+
+    dialogRef.closed.subscribe((result) => {
+      if (result && typeof result !== 'string') {
+        this.addProduct(result as Product);
+      } else {
+        this._snackBar.open('Product not valid!', 'Close', {
+          duration: 2000,
+        });
+      }
     });
   }
 }

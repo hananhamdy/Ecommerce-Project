@@ -10,5 +10,6 @@ export class APIs {
     GetProductsList: `${this.apiUrl}/products/`,
     GetProduct: `${this.apiUrl}/products/`,
     DeleteProduct: `${this.apiUrl}/products/`,
+    AddProduct: `${this.apiUrl}/products/`,
   };
 }

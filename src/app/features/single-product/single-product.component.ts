@@ -9,11 +9,12 @@ import { APIs } from '../../core/configs/APIs.config';
 import { AuthenticationService } from '../../core/services/authentication.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ProductDetails } from '../../core/interfaces/product-details.interface';
+import { LoadingComponent } from '../../shared/components/loading/loading.component';
 
 @Component({
   selector: 'app-single-product',
   standalone: true,
-  imports: [MatCardModule, MatButtonModule, HttpClientModule],
+  imports: [MatCardModule, MatButtonModule, HttpClientModule, LoadingComponent],
   templateUrl: './single-product.component.html',
   styleUrl: './single-product.component.scss'
 })
@@ -31,6 +32,7 @@ export class SingleProductComponent {
   }
 
   getProductDetails() {
+    this.isLoading = true;
     this._route.paramMap.subscribe(params => {
       this.productId = params.get('id') as string;
     });

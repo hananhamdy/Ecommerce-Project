@@ -1,18 +1,24 @@
 <section class="section">
     <div class="container">
         <div class="cards-wrapper">
-            <mat-card class="card card-product" appearance="outlined">
-                <div mat-card-image>
-                    <img [src]="productsDetails.image" [alt]="productsDetails.title">
+            @if (isLoading) {
+                <div class="w-100">
+                    <app-loading [repeat]="5"></app-loading>
                 </div>
-                <mat-card-header>
-                    <mat-card-title>{{productsDetails.title}}</mat-card-title>
-                    <mat-card-subtitle>{{productsDetails.price}}</mat-card-subtitle>
-                </mat-card-header>
-                <mat-card-content>
-                    {{productsDetails.description}}
-                </mat-card-content>
-            </mat-card>
+            }  @else {
+                <mat-card class="card card-product" appearance="outlined">
+                    <div mat-card-image>
+                        <img [src]="productsDetails.image" [alt]="productsDetails.title">
+                    </div>
+                    <mat-card-header>
+                        <mat-card-title>{{productsDetails.title}}</mat-card-title>
+                        <mat-card-subtitle>{{productsDetails.price}}</mat-card-subtitle>
+                    </mat-card-header>
+                    <mat-card-content>
+                        {{productsDetails.description}}
+                    </mat-card-content>
+                </mat-card>
+            }
         </div>
     </div>
 </section>

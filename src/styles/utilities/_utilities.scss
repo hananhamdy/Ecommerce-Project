@@ -50,9 +50,14 @@
     }
   }
 
+  .mat-mdc-card-header-text {
+    width: 100%;
+  }
+
   .mat-mdc-card-title {
     @include font(24px, medium);
     text-align: left;
+    width: 100%;
   }
 
   .mat-mdc-card-header {

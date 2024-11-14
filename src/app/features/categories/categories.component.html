@@ -22,6 +22,7 @@
                         <mat-card-header>
                             <mat-card-title>{{product.title}}</mat-card-title>
                             <mat-card-subtitle>{{product.price}}</mat-card-subtitle>
+                            <mat-card-subtitle>{{product.category}}</mat-card-subtitle>
                         </mat-card-header>
                         <mat-card-actions>
                             <button [routerLink]="'/category/' + product.id" mat-button>show more</button>

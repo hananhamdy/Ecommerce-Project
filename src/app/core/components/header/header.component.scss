@@ -2,12 +2,29 @@
 
 .header {
     background-color: $color-white;
+    position: relative;
+    z-index: 1;
 
     &-content {
         display: flex;
         justify-content: space-between;
         align-items: center;
         height: 80px;
+    }
+
+    .toggle-menu {
+        width: 1.5rem;
+        height: 1.5rem;
+        display: inline-block;
+
+        @include media-query($lg) {
+            display: none;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+        }
     }
 
     &-logo {
@@ -19,6 +36,24 @@
         display: flex;
         align-items: center;
         gap: 2.5rem;
+        position: absolute;
+        top: 100%;
+        flex-direction: column;
+        background: $color-white;
+        width: 100%;
+        left: 0;
+        padding: 2.5rem;
+        border-bottom-right-radius: 1rem;
+        border-bottom-left-radius: 1rem;
+        border-top: 1px solid $color-light-grey;
+
+
+        @include media-query($lg) {
+            position: initial;
+            flex-direction: row;
+            width: auto;
+            background-color: $color-transparent;
+        }
 
         .avatar {
             width: 2rem;
